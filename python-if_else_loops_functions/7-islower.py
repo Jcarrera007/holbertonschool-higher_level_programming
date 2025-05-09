@@ -1,4 +1,4 @@
-#!/usr/bin/python3
 def islower(c):
-    print(f"Input: {c}, Type: {type(c)}")
-    return c.islower()
+    if 'a' <= c <= 'z':
+        return True
+    return False
