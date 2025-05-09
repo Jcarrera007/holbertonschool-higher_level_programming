@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-def app(a, b)
-   return a + b
-
+def add(a, b):
+    """Adds two integers and returns the result."""
+    return a + b
