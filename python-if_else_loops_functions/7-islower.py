@@ -3,4 +3,4 @@ def islower(c):
     for char in c:
         if char.islower():
             return True
-return False
+    return False
