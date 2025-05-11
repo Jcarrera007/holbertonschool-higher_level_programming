@@ -7,11 +7,11 @@ def main():
 
     # Print the number of arguments with proper formatting
     if num_args == 0:
-        print("Number of argument(s):0")
+        print("0 argument")
     elif num_args == 1:
-        print("Number of argument(s): 1 argument:")
+        print("1 argument:")
     else:
-        print(f"Number of argument(s): {num_args} arguments:")
+        print(f"{num_args} arguments:")
 
     # Print each argument with its position if there are any arguments
     for i in range(num_args):
