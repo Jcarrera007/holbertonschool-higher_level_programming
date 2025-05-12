@@ -8,7 +8,7 @@ def main():
     if len(sys.argv) == 1:
         print("0 arguments.")
     else:
-        print(f"{len(sys.argv) - 1} arguments:")
+        print(f"{len(sys.argv) - 1} argument:")
         for i, arg in enumerate(sys.argv[1:], start=1):
             print(f"{i}: {arg}")
 
