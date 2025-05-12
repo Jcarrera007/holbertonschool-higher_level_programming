@@ -13,5 +13,5 @@ def main():
     print(total)
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main()
