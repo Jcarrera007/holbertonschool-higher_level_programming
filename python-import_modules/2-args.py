@@ -13,5 +13,5 @@ def main():
             print(f"{i}: {arg}")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
