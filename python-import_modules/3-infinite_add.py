@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
+
 import sys
+
 
 def main():
     total = 0
@@ -10,7 +12,6 @@ def main():
 
     print(total)
 
-if __name__ == "__main__":
+
+if _name_ == "_main_":
     main()
-
-
