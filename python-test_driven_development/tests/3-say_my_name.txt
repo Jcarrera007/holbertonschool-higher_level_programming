@@ -14,7 +14,7 @@ Usage
 
 ::
 
-    >>> say_my_name("Jimmy")
+    >>> say_my_name("Jimmy ")
     My name is Jimmy
 
 ::
