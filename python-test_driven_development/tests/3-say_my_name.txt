@@ -16,7 +16,6 @@ Usage
 
     >>> say_my_name("Jimmy")
     My name is Jimmy
-
 ::
 
     >>> say_my_name(9, "Carrera")
