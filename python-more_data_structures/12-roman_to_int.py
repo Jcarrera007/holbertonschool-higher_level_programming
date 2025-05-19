@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def roman_to_int(s):
+    if not isinstance(s, str):
+        return 0
     roman_numerals = {
         'I': 1,
         'V': 5,
@@ -13,7 +15,7 @@ def roman_to_int(s):
     prev_value = 0
 
     for char in s:
-        value = roman_numerals[char]
+        value = roman_numerals.get(char, 0)
         if value > prev_value:
             total += value - 2 * prev_value
         else:
