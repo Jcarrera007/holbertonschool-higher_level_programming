@@ -1,31 +1,60 @@
+#!/usr/bin/python3
 """
 Doctest for add_integer function.
 
->>> from add_integer import add_integer
+Examples:
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
 >>> add_integer(1, 2)
 3
->>> add_integer(100, -2)
-98
+
+>>> add_integer(-1, -2)
+-3
+
+>>> add_integer(0, 0)
+0
+
+>>> add_integer(1.5, 2.5)
+3
+
+>>> add_integer(-1.5, -2.5)
+-3
+
+>>> add_integer(1, 2.9)
+3
+
+>>> add_integer(2.9, 1)
+3
+
 >>> add_integer(2)
 100
->>> add_integer(1.5, 2.3)
-3
->>> add_integer(-1.7, 1.2)
-0
+
+>>> add_integer(1000000000, 1000000000)
+2000000000
+
 >>> add_integer("1", 2)
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
+
 >>> add_integer(1, "2")
 Traceback (most recent call last):
     ...
 TypeError: b must be an integer
+
 >>> add_integer(None, 2)
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
+
 >>> add_integer(1, None)
 Traceback (most recent call last):
     ...
 TypeError: b must be an integer
+
 """
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
