@@ -52,7 +52,8 @@ class Rectangle:
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """Returns the string representation of the rectangle with print_symbol."""
+        """Returns the string representation
+of the rectangle with print_symbol."""
         if self.__width == 0 or self.__height == 0:
             return ""
         symbol = str(self.print_symbol)
@@ -66,6 +67,7 @@ class Rectangle:
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
-        """Prints a message when an instance is deleted and decrements instance count."""
+        """Prints a message when an instance
+is deleted and decrements instance count."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
