@@ -15,7 +15,7 @@ class Student:
         If attrs is a list of strings, only those attributes are included.
         Otherwise, all attributes are included.
         """
-        if isinstance(attrs, list) and
-        all(isinstance(attr, str) for attr in attrs):
+        if isinstance(attrs, list) and all(isinstance(attr, str)
+                                           for attr in attrs):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.__dict__
