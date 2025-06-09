@@ -19,20 +19,18 @@ def deserialize_from_xml(filename):
     result = {}
     for child in root:
         text = child.text
-        # Try to convert to int or float, else leave as string
-        if text is not None:
-            if text.isdigit():
-                result[child.tag] = int(text)
-            else:
-                try:
-                    result[child.tag] = float(text)
-                except ValueError:
-                    if text.lower() == "true":
-                        result[child.tag] = True
-                    elif text.lower() == "false":
-                        result[child.tag] = False
-                    else:
-                        result[child.tag] = text
-        else:
+        if text is None or text == "None":
             result[child.tag] = None
+        elif text == "True":
+            result[child.tag] = True
+        elif text == "False":
+            result[child.tag] = False
+        else:
+            try:
+                if "." in text:
+                    result[child.tag] = float(text)
+                else:
+                    result[child.tag] = int(text)
+            except ValueError:
+                result[child.tag] = text
     return result
