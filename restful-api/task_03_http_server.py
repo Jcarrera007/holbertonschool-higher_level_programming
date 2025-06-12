@@ -41,7 +41,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            error = {"error": "not found"}
+            error = {"error": "Not found"}
             self.wfile.write(json.dumps(error).encode("utf-8"))
 
 
