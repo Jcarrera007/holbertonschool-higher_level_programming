@@ -37,12 +37,14 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             }
             self.wfile.write(json.dumps(info).encode("utf-8"))
 
-        else:
+       else:
             self.send_response(404)
-            self.send_header("Content-type", "application/json")
+            self.send_header("Content-Type", "application/json; charset=utf-8")
             self.end_headers()
             error = {"error": "Not found"}
-            self.wfile.write(json.dumps(error).encode("utf-8"))
+            response = json.dumps(error, separators=(",", ":"))  # compact JSON
+            self.wfile.write(response.encode("utf-8"))
+
 
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
