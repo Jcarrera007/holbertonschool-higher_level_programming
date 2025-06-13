@@ -33,7 +33,9 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
 
         else:
             self._set_headers(404, "application/json")
-            self.wfile.write(b'{"error":"Not found"}')
+            error = {"error": "Not found"}
+            response = json.dumps(error, separators=(",", ":"))
+            self.wfile.write(response.encode("utf-8"))
 
     def do_POST(self):
         content_length = int(self.headers.get("Content-Length", 0))
