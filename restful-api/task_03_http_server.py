@@ -16,7 +16,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"Hello, this is a simple API!")
 
         elif self.path == "/data":
-            self._set_headers()
+            self._set_headers(200, "application/json")
             data = {"name": "John", "age": 30, "city": "New York"}
             response = json.dumps(data, separators=(",", ":"))
             self.wfile.write(response.encode("utf-8"))
@@ -26,13 +26,13 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"OK")
 
         elif self.path == "/info":
-            self._set_headers()
+            self._set_headers(200, "application/json")
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             response = json.dumps(info, separators=(",", ":"))
             self.wfile.write(response.encode("utf-8"))
 
         else:
-            self._set_headers(404)
+            self._set_headers(404, "application/json")
             error = {"error": "Not found"}
             response = json.dumps(error, separators=(",", ":"))
             self.wfile.write(response.encode("utf-8"))
