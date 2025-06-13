@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """Simple RESTful API using Python's http.server module"""
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server
+import BaseHTTPRequestHandler, HTTPServer
 import json
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
@@ -52,10 +53,9 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps(response, separators=(",", ":")).encode("utf-8"))
 
 
-def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
-    server_address = ("", port)
+def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
+    server_address = ('', 8000)
     httpd = server_class(server_address, handler_class)
-    print(f"✅ Server running at http://localhost:{port}")
     httpd.serve_forever()
 
 
