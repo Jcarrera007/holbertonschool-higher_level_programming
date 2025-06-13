@@ -7,7 +7,7 @@ import json
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     def _set_headers(self, status_code=200, content_type="application/json"):
         self.send_response(status_code)
-        self.send_header("Content-Type", f"{content_type}; charset=utf-8")
+        self.send_header("Content-Type", content_type)
         self.end_headers()
 
     def do_GET(self):
