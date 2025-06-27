@@ -37,7 +37,23 @@ This repository contains scripts and examples to learn and practice the basics o
 
 | File Name              | Description                           |
 |------------------------|---------------------------------------|
-| `0-list_databases.sql` | Script to list all databases in MySQL |
+| `0-privileges.sql`     | Script to list all privileges of MySQL users user_0d_1 and user_0d_2 |
+| `1-create_user.sql`    | Script to create a MySQL user |
+| `2-create_read_user.sql` | Script to create a user with read privileges |
+| `3-force_name.sql`     | Script to create a table with NOT NULL constraint |
+| `4-never_empty.sql`    | Script to create a table with default values |
+| `5-unique_id.sql`      | Script to create a table with unique constraint |
+| `6-states.sql`         | Script to create states table |
+| `7-cities.sql`         | Script to create cities table with foreign key |
+| `8-cities_of_california_subquery.sql` | Script using subquery to find cities in California |
+| `9-cities_by_state_join.sql` | Script using JOIN to list cities by state |
+| `10-genre_id_by_show.sql` | Script to list shows with their genre IDs |
+| `11-genre_id_all_shows.sql` | Script to list all shows including those without genres |
+| `12-no_genre.sql`      | Script to list shows without any genre |
+| `13-count_shows_by_genre.sql` | Script to count shows by genre |
+| `14-my_genres.sql`     | Script to list genres of a specific show |
+| `15-comedy_only.sql`   | Script to list comedy shows only |
+| `16-shows_by_genre.sql` | Script to list shows by genre |
 
 ---
 
