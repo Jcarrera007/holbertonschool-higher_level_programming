@@ -26,7 +26,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
     
     # Execute SQL query
-    cursor.execute("SELECT * FROM states;")
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
     
     # Fetch all results
     results = cursor.fetchall()
