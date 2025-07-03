@@ -10,7 +10,7 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    
+
     # Connect to MySQL server
     db = MySQLdb.connect(
         host="localhost",
@@ -19,17 +19,17 @@ if __name__ == "__main__":
         passwd=password,
         db=database
     )
-    
+
     # Create cursor
     cursor = db.cursor()
-    
+
     # Execute query to get states starting with 'N'
     cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
-    
+
     # Fetch and display results
     results = cursor.fetchall()
     for row in results:
         print(row)
-    
+
     # Close cursor and database connection
     cursor.close()
