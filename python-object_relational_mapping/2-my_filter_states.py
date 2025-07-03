@@ -26,10 +26,12 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute query to get states matching the argument
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-    .format(state_name)
+    query = (
+        "SELECT * FROM states "
+        "WHERE name = '{}' "
+        "ORDER BY id ASC"
+    ).format(state_name)
     cursor.execute(query)
-
     # Fetch and display results
     results = cursor.fetchall()
     for row in results:
