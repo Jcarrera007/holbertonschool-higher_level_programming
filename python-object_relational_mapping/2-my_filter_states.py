@@ -26,7 +26,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute query to get states matching the argument
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    query = f"SELECT * FROM states WHERE name = '{state_name}' ORDER BY id ASC"
     cursor.execute(query)
 
     # Fetch and display results
