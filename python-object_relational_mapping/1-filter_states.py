@@ -4,7 +4,6 @@
 import MySQLdb
 import sys
 
-
 if __name__ == "__main__":
     # Get command line arguments
     username = sys.argv[1]
@@ -23,8 +22,8 @@ if __name__ == "__main__":
     # Create cursor
     cursor = db.cursor()
 
-    # Execute query to get states starting with 'N'
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    # Execute query with case-sensitive filter using LIKE BINARY
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
 
     # Fetch and display results
     results = cursor.fetchall()
