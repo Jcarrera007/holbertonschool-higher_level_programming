@@ -22,7 +22,8 @@ if __name__ == "__main__":
     # Create cursor
     cursor = db.cursor()
 
-    # Execute query to get all cities and their state names, sorted by cities.id
+    # Execute query to get all cities and
+    # their state names, sorted by cities.id
     cursor.execute("""
         SELECT cities.id, cities.name, states.name
         FROM cities
