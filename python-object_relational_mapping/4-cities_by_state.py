@@ -4,7 +4,6 @@
 import MySQLdb
 import sys
 
-
 if __name__ == "__main__":
     # Get command line arguments
     username = sys.argv[1]
@@ -23,8 +22,13 @@ if __name__ == "__main__":
     # Create cursor
     cursor = db.cursor()
 
-    # Execute query to get all cities sorted by id
-    cursor.execute("SELECT * FROM cities ORDER BY id ASC")
+    # Execute query to get all cities and their state names, sorted by cities.id
+    cursor.execute("""
+        SELECT cities.id, cities.name, states.name
+        FROM cities
+        JOIN states ON cities.state_id = states.id
+        ORDER BY cities.id ASC
+    """)
 
     # Fetch and display results
     results = cursor.fetchall()
