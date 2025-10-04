@@ -18,19 +18,33 @@ def deserialize_from_xml(filename):
     root = tree.getroot()
     result = {}
     for child in root:
+        # Preserve values as strings; XML elements do not retain Python types.
+        # If an element has no text, store None to reflect empty nodes.
         text = child.text
-        if text is None or text == "None":
+        if text is None:
             result[child.tag] = None
-        elif text == "True":
-            result[child.tag] = True
-        elif text == "False":
-            result[child.tag] = False
         else:
-            try:
-                if "." in text:
-                    result[child.tag] = float(text)
-                else:
-                    result[child.tag] = int(text)
-            except ValueError:
-                result[child.tag] = text
+            result[child.tag] = text
     return result
+#!/usr/bin/env python3
+from task_03_xml import serialize_to_xml, deserialize_from_xml
+
+
+def main():
+    sample_dict = {
+        'name': 'John',
+        'age': '28',
+        'city': 'New York'
+    }
+
+    xml_file = "data.xml"
+    serialize_to_xml(sample_dict, xml_file)
+    print(f"Dictionary serialized to {xml_file}\n")
+
+    deserialized_data = deserialize_from_xml(xml_file)
+    print("Deserialized Data:")
+    print(deserialized_data)
+
+
+if __name__ == "__main__":
+    main()
