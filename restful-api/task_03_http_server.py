@@ -58,7 +58,7 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self._send_json(200, info)
         else:
-             self._send_text(404, "Not Found")
+            self._send_text(404, "Endpoint Not Found")
 
     def do_POST(self):
         content_length = int(self.headers.get("Content-Length", 0))
