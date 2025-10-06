@@ -57,7 +57,7 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self._send_json(200, info)
         else:
-            self.send_response(404)
+            self.send_response(404, note="Not Found")
             self.end_headers()
 
     def do_POST(self):
