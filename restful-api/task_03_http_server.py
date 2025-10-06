@@ -5,22 +5,19 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 class Server(BaseHTTPRequestHandler):
-    # Helper methods to centralize response sending and ensure consistent headers
+    # Helper methods
     def _send_text(self, code, text, charset="utf-8"):
         body = text.encode(charset)
         self.send_response(code)
         self.send_header("Content-Type", f"text/plain; charset={charset}")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
-        # write body only for non-HEAD requests
         if self.command != 'HEAD':
             self.wfile.write(body)
 
     def _send_json(self, code, obj):
         body = json.dumps(obj, separators=(",", ":")).encode("utf-8")
         self.send_response(code)
-        # Some tests expect the Content-Type header to be exactly 'application/json'
-        # (no charset). Use the plain mime type to maximize compatibility.
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -28,21 +25,19 @@ class Server(BaseHTTPRequestHandler):
             self.wfile.write(body)
 
     def do_HEAD(self):
-        # Mirror headers that would be sent for GET without the body
-        # Use same routing logic as GET but avoid sending bodies
         if self.path == "/":
             self._send_text(200, "")
         elif self.path == "/data":
-            self._send_json(200, {"name": "Jimmy", "age": 34, "city": "New York"})
+            self._send_json(200, {"name": "John", "age": 30, "city": "New York"})
         elif self.path == "/status":
             self._send_text(200, "")
         elif self.path == "/info":
             self._send_json(200, {"version": "1.0", "description": "A simple API built with http.server"})
         else:
-            self._send_text(404, "")
+            self.send_response(404)
+            self.end_headers()
 
     def do_OPTIONS(self):
-        # Basic CORS/OPTIONS support
         self.send_response(204)
         self.send_header("Allow", "GET,POST,HEAD,OPTIONS")
         self.send_header("Access-Control-Allow-Origin", "*")
@@ -54,7 +49,7 @@ class Server(BaseHTTPRequestHandler):
         if self.path == "/":
             self._send_text(200, "Hello, this is a simple API!")
         elif self.path == "/data":
-            data = {"name": "Jimmy", "age": 34, "city": "New York"}
+            data = {"name": "John", "age": 30, "city": "New York"}
             self._send_json(200, data)
         elif self.path == "/status":
             self._send_text(200, "OK")
@@ -62,11 +57,7 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self._send_json(200, info)
         else:
-            # Tests expect a 404 with no body/content for undefined endpoints.
-            # Send headers only and no body.
             self.send_response(404)
-            self.send_header("Content-Type", "text/plain")
-            self.send_header("Content-Length", "0")
             self.end_headers()
 
     def do_POST(self):
