@@ -58,8 +58,7 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self._send_json(200, info)
         else:
-            # THIS IS THE CRUCIAL CHANGE: send text content for 404
-            self._send_text(404, "Not Found") # Assuming the test expects "Not Found" as content
+             self._send_json(404, {"error": "Not Found"})
 
     def do_POST(self):
         content_length = int(self.headers.get("Content-Length", 0))
