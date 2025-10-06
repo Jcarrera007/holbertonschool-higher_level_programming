@@ -32,7 +32,8 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"Endpoint no encontrado")
+            # Return the standard English message expected by tests
+            self.wfile.write(b"Not Found")
 
     def do_POST(self):
         content_length = int(self.headers.get("Content-Length", 0))
